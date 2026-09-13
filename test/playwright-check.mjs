@@ -1,8 +1,11 @@
 import { chromium } from "playwright";
 import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const BASE = "http://localhost:5173";
-const OUT = "/home/claude/wsw-summit/test/screenshots";
+const OUT = path.join(__dirname, "screenshots");
 fs.mkdirSync(OUT, { recursive: true });
 
 const consoleErrors = [];

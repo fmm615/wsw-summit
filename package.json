@@ -5,6 +5,10 @@
   "description": "Personalized attendance sharing portal for the Women Shaping Wealth Summit 2026 (PLAYBOOK, in alignment with Women Spark).",
   "type": "module",
   "scripts": {
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "test": "node test/playwright-check.mjs"
+  },
+  "devDependencies": {
+    "playwright": "^1.48.0"
   }
 }
