@@ -30,20 +30,14 @@ export const EVENT_CONFIG = {
  * Builds the default, editable LinkedIn/WhatsApp caption for a profile.
  * Returns null until there's a name to say something real with — the
  * caller shows an instructional placeholder until then. Job title and
- * company are optional flourishes, not requirements, since attending
- * doesn't depend on either the way a nomination category did.
+ * company still appear on the graphic itself, but not in the caption text.
  */
 export function buildDefaultCaption(profile) {
   if (!profile.fullName?.trim()) return null;
 
-  const roleLine = profile.jobTitle
-    ? profile.company
-      ? ` as ${profile.jobTitle} at ${profile.company}`
-      : ` as ${profile.jobTitle}`
-    : "";
   const hashtags = EVENT_CONFIG.hashtags.join(" ");
 
-  return `I'm heading to the ${EVENT_CONFIG.eventName}${roleLine} — ${EVENT_CONFIG.dateRange} in ${EVENT_CONFIG.city}, hosted by ${EVENT_CONFIG.host}.
+  return `I'm heading to the ${EVENT_CONFIG.eventName} — ${EVENT_CONFIG.dateRange} in ${EVENT_CONFIG.city}, hosted by ${EVENT_CONFIG.host}.
 
 Where women, capital, and power converge. Excited to connect with this incredible community — see you there!
 
