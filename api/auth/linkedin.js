@@ -16,6 +16,14 @@
  * app's Products tab) alongside `openid profile email`. That's what lets
  * api/publish/linkedin.js actually publish a post on the signed-in
  * attendee's behalf later — see LINKEDIN_SETUP.md for the exact steps.
+ *
+ * `enable_extended_login` tells LinkedIn's authorization screen to offer
+ * its own extended sign-in options (Google, Apple, passkeys) alongside the
+ * password field, for visitors whose account/browser supports it. This
+ * doesn't add a separate Google/Apple integration to this app — LinkedIn
+ * still owns the entire sign-in step either way and redirects back to
+ * /api/auth/callback the same way regardless of which option someone used;
+ * this app never sees a Google, Apple, or LinkedIn password.
  */
 import crypto from "node:crypto";
 
@@ -45,6 +53,12 @@ export default function handler(req, res) {
     redirect_uri: redirectUri,
     scope: "openid profile email w_member_social",
     state,
+    // Asks LinkedIn's own login screen to offer its extended sign-in
+    // options (Google, Apple, passkeys) alongside the password field, when
+    // available for the visitor's account/browser. LinkedIn still owns the
+    // entire sign-in step and redirects back here the same way either way
+    // — this app never sees a Google/Apple/LinkedIn password.
+    enable_extended_login: "true",
   });
 
   res.writeHead(302, {
