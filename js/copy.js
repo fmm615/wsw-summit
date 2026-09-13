@@ -37,7 +37,7 @@ export function buildDefaultCaption(profile) {
 
   const hashtags = EVENT_CONFIG.hashtags.join(" ");
 
-  return `I'm heading to the ${EVENT_CONFIG.eventName} — ${EVENT_CONFIG.dateRange} in ${EVENT_CONFIG.city}, hosted by ${EVENT_CONFIG.host}.
+  return `I'm heading to the ${EVENT_CONFIG.eventName} — ${EVENT_CONFIG.dateRange} in ${EVENT_CONFIG.city}.
 
 Where women, capital, and power converge. Excited to connect with this incredible community — see you there!
 
