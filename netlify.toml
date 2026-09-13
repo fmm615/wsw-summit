@@ -1,0 +1,15 @@
+# No redirects needed: this is a single static page with no client-side
+# routes to fall back to index.html for.
+#
+# Deliberately NOT adding a catch-all "/* -> /index.html" rule here: on a
+# static-only deploy (no functions), that used to make /api/me return a
+# 200 (the index page's own HTML) instead of a real 404, which the
+# frontend can't tell apart from a working API by status code alone —
+# js/app.js now also checks the response's content-type to be safe either
+# way, but there's no reason to keep the redirect rule around at all now.
+#
+# The api/ folder (LinkedIn Sign-In) is written for Vercel's zero-config
+# serverless functions and is NOT wired up for Netlify's functions
+# convention — Vercel is the supported host for the full app with LinkedIn
+# sign-in (see README.md #6 and LINKEDIN_SETUP.md). Everything else works
+# fine on a plain static host like this.

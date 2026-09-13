@@ -1,0 +1,10 @@
+{
+  "name": "wsw-summit-2026",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Personalized attendance sharing portal for the Women Shaping Wealth Summit 2026 (PLAYBOOK, in alignment with Women Spark).",
+  "type": "module",
+  "scripts": {
+    "dev": "node server.js"
+  }
+}

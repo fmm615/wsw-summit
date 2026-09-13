@@ -1,0 +1,563 @@
+/* ==========================================================================
+   WOMEN SHAPING WEALTH SUMMIT 2026 — design tokens & styles
+   Mobile-first: base rules target phones (this is primarily an email/
+   WhatsApp link), then min-width queries progressively enhance for larger
+   screens. Palette matches the real Summit artwork and get-playbook.com/
+   women-shaping-wealth: white + deep navy-purple + a neon green accent.
+   --color-gold/--color-gold-bright keep their names from the shared
+   component code (form.js, socialCard.js, etc. all reference them) but now
+   hold the Summit's green instead of the Gala's gold — --color-gold is a
+   deepened, accessible shade for text/borders on white; --color-gold-bright
+   is the vivid neon from the artwork, reserved for use on dark backgrounds
+   (like the canvas loading state) where its contrast is excellent.
+   ========================================================================== */
+
+:root {
+  --color-ink: #1c1033;
+  --color-ivory: #ffffff;
+  --color-ivory-deep: #f5f3fa;
+  --color-navy: #1b0e3d;
+  --color-navy-soft: #2c1b54;
+  --color-gold: #3f6b12;
+  --color-gold-bright: #a6ff3e;
+  --color-body-text: #4a4460;
+  --color-hairline: rgba(28, 16, 51, 0.12);
+
+  --font-display: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --container-max: 720px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-ivory);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* Without this, an element that also has a `display` rule (e.g. any
+   `.btn`) ignores the `hidden` attribute — author styles beat the
+   browser's default `[hidden]{display:none}` at equal specificity. Toggle
+   visibility with `el.hidden = true/false` everywhere in this app; this
+   rule is what makes that actually work. */
+[hidden] {
+  display: none !important;
+}
+
+/* ── Header ───────────────────────────────────────────────────────────── */
+
+.site-header {
+  border-bottom: 1px solid var(--color-hairline);
+  padding: 18px 20px;
+}
+
+.site-header__inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-align: center;
+}
+
+.site-header__eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+@media (min-width: 640px) {
+  .site-header__inner {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+/* ── Page / main ──────────────────────────────────────────────────────── */
+
+main.page {
+  flex: 1;
+  max-width: var(--container-max);
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 20px 64px;
+}
+
+/* ── Hero ─────────────────────────────────────────────────────────────── */
+
+.hero {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.hero__kicker {
+  margin: 0 0 10px;
+  font-size: 13px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-gold);
+}
+
+.hero__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(32px, 8vw, 44px);
+  line-height: 1.15;
+  margin: 0 0 14px;
+  color: var(--color-ink);
+}
+
+.hero__name {
+  color: var(--color-gold);
+}
+
+.hero__subtitle {
+  margin: 0;
+  font-size: 15px;
+  color: var(--color-body-text);
+}
+
+.hero__event {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(22px, 5vw, 28px);
+  margin: 2px 0 10px;
+  color: var(--color-ink);
+}
+
+.hero__dates {
+  display: inline-block;
+  padding: 8px 18px;
+  border: 1px solid var(--color-gold);
+  border-radius: 999px;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+  color: var(--color-gold);
+}
+
+/* ── Personalization form ────────────────────────────────────────────── */
+
+.form {
+  border-top: 1px solid var(--color-hairline);
+  border-bottom: 1px solid var(--color-hairline);
+  padding: 32px 0;
+  margin-bottom: 40px;
+}
+
+.form__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 26px;
+  text-align: center;
+  margin: 0 0 20px;
+}
+
+.form__linkedin {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.form__linkedin-note {
+  text-align: center;
+  font-size: 13px;
+  color: var(--color-body-text);
+  margin: 0 0 8px;
+}
+
+.form__linkedin-disclaimer {
+  text-align: center;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--color-body-text);
+  opacity: 0.8;
+  margin: 0 0 24px;
+}
+
+.form__demo-note {
+  background: var(--color-ivory-deep);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  font-size: 13px;
+  color: var(--color-body-text);
+  text-align: left;
+  margin: 0 0 20px;
+}
+
+.form__demo-note strong {
+  color: var(--color-ink);
+}
+
+.form__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .form__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form__label {
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-body-text);
+}
+
+.form__field input,
+.form__field select {
+  width: 100%;
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--color-ink);
+  background: #fff;
+  min-height: 46px;
+}
+
+.form__field input:focus,
+.form__field select:focus {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 1px;
+}
+
+.form__field--photo {
+  grid-column: 1 / -1;
+}
+
+.form__photo-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.form__photo-upload {
+  padding: 10px 18px;
+  min-height: 40px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.form__photo-remove {
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-body-text);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.form__photo-remove:hover {
+  color: var(--color-ink);
+}
+
+.form__photo-status {
+  margin: 0;
+  font-size: 12px;
+  color: var(--color-body-text);
+}
+
+/* ── Social card ──────────────────────────────────────────────────────── */
+
+.social-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 44px;
+}
+
+.social-card__frame {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: 0 24px 60px -20px rgba(13, 21, 36, 0.45);
+  background: var(--color-navy);
+  aspect-ratio: 1920 / 1080;
+}
+
+.social-card__canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.social-card__loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-gold-bright);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--color-navy);
+}
+
+/* ── Buttons ──────────────────────────────────────────────────────────── */
+
+.btn {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: var(--radius-sm);
+  padding: 14px 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+  min-height: 50px;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--color-ink);
+  border: 1px solid var(--color-hairline);
+}
+
+.btn--ghost:hover {
+  border-color: var(--color-gold);
+  color: var(--color-gold);
+}
+
+.btn--outline {
+  background: transparent;
+  color: var(--color-ink);
+  border: 1.5px solid var(--color-ink);
+}
+
+.btn--outline:hover {
+  background: var(--color-ink);
+  color: var(--color-ivory);
+}
+
+.btn--linkedin {
+  background: #0a66c2;
+  color: #fff;
+  width: 100%;
+}
+
+.btn--linkedin:hover {
+  background: #0956a3;
+}
+
+.btn--whatsapp {
+  background: #25d366;
+  color: #06280f;
+  width: 100%;
+}
+
+.btn--whatsapp:hover {
+  background: #1fbd5a;
+}
+
+/* ── Share section ────────────────────────────────────────────────────── */
+
+.share {
+  border-top: 1px solid var(--color-hairline);
+  padding-top: 32px;
+}
+
+.share__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 26px;
+  text-align: center;
+  margin: 0 0 20px;
+}
+
+.share__actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.share__caption-wrap {
+  background: var(--color-ivory-deep);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-md);
+  padding: 18px;
+}
+
+.share__caption-label {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-body-text);
+  margin-bottom: 10px;
+}
+
+.share__caption {
+  width: 100%;
+  resize: vertical;
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--color-ink);
+  background: #fff;
+}
+
+.share__caption:focus {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 1px;
+}
+
+.share__confirmation {
+  min-height: 20px;
+  margin: 10px 0 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a7a44;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.share__confirmation.is-visible {
+  opacity: 1;
+}
+
+.share__publish-panel {
+  background: var(--color-ivory-deep);
+  border: 1px solid var(--color-hairline);
+  border-radius: var(--radius-md);
+  padding: 18px;
+  margin-top: 16px;
+}
+
+.share__publish-copy {
+  margin: 0 0 14px;
+  font-size: 14px;
+  color: var(--color-body-text);
+  line-height: 1.5;
+}
+
+.share__publish-copy strong {
+  color: var(--color-ink);
+}
+
+.share__publish-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.share__publish-actions .btn {
+  flex: 1 1 auto;
+  min-width: 140px;
+}
+
+.share__publish-status {
+  margin: 12px 0 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.share__publish-status a {
+  color: var(--color-gold);
+}
+
+@media (min-width: 640px) {
+  .share__actions {
+    grid-template-columns: 1fr 1fr;
+  }
+  .share__actions .btn--outline {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ── Footer ───────────────────────────────────────────────────────────── */
+
+.site-footer {
+  border-top: 1px solid var(--color-hairline);
+  padding: 28px 20px 40px;
+  text-align: center;
+}
+
+.site-footer__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  margin: 0 0 2px;
+}
+
+.site-footer__sub {
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  font-weight: 600;
+  margin: 0 0 10px;
+}
+
+.site-footer__legal {
+  font-size: 12px;
+  color: var(--color-body-text);
+  margin: 0;
+}
+
